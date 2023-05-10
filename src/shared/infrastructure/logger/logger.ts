@@ -2,10 +2,10 @@ import { Log } from '../../domain/logger';
 
 export class Logger implements Log {
   info(message: string): void {
-    console.log(message);
+    console.log('[INFO]', message);
   }
 
   error(message: string): void {
-    console.error(message);
+    console.error('[ERROR]', message);
   }
 }

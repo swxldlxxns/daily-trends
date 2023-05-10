@@ -6,6 +6,7 @@ services:
     build: .
     image: api
     environment:
+      PORT: 3000
       DB_NAME: feed
       DB_USER: root
       DB_PASS: root
