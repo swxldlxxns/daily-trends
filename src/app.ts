@@ -3,8 +3,8 @@ import express, { Express } from 'express';
 import helmet from 'helmet';
 
 import { feedRouter } from './feed/infrastructure/rest/feed.router';
-import { config } from './feed/shared/infrastructure/config';
-import { Logger } from './feed/shared/infrastructure/logger/logger';
+import { config } from './shared/infrastructure/config';
+import { Logger } from './shared/infrastructure/logger/logger';
 
 export class App {
   app: Express;
