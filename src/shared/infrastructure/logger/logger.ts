@@ -1,6 +1,6 @@
-import { Log } from '../../domain/logger';
+import { LoggerInterface } from '../../domain/logger.interface';
 
-export class Logger implements Log {
+export class Logger implements LoggerInterface {
   info(message: string): void {
     console.log('[INFO]', message);
   }

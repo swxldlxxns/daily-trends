@@ -5,13 +5,13 @@ import { UpdateResult } from 'mongodb';
 import { Feeds } from '../../../shared/domain/news';
 import { GetDailyNews } from '../../../shared/infrastructure/daily-news/get-daily-news';
 import { Logger } from '../../../shared/infrastructure/logger/logger';
-import { FeedRepository } from '../../domain/feed.repository';
+import { FeedInterface } from '../../domain/feed.interface';
 
 export class FeedController {
   constructor(
     private readonly _logger: Logger,
     private readonly _getDailyNews: GetDailyNews,
-    private readonly _feedRepository: FeedRepository,
+    private readonly _feedRepository: FeedInterface,
   ) {}
 
   async getNews(req: Request, res: Response) {

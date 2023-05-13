@@ -1,5 +1,5 @@
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
 
-export interface RequestsMethods {
+export interface RequestsMethodsInterface {
   get(config: AxiosRequestConfig): Promise<AxiosResponse>;
 }

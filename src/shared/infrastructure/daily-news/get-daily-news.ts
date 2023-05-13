@@ -1,11 +1,11 @@
 import * as cheerio from 'cheerio';
 import moment from 'moment';
 
-import { DailyNews } from '../../domain/daily-news';
+import { DailyNewsInterface } from '../../domain/daily-news.interface';
 import { Feeds } from '../../domain/news';
 import { Request } from '../request/request';
 
-export class GetDailyNews implements DailyNews {
+export class GetDailyNews implements DailyNewsInterface {
   constructor(private readonly _request: Request) {}
 
   async elMundo(): Promise<Feeds[]> {

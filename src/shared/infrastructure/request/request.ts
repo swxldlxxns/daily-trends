@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
-import { RequestsMethods } from '../../domain/requests-methods';
+import { RequestsMethodsInterface } from '../../domain/requests-methods.interface';
 
-export class Request implements RequestsMethods {
+export class Request implements RequestsMethodsInterface {
   async get(config: AxiosRequestConfig): Promise<AxiosResponse> {
     return axios.request({
       ...config,

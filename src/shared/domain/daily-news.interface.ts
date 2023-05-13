@@ -1,6 +1,6 @@
 import { Feeds } from './news';
 
-export interface DailyNews {
+export interface DailyNewsInterface {
   elPais(): Promise<Feeds[]>;
   elMundo(): Promise<Feeds[]>;
 }

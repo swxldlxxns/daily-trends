@@ -2,9 +2,9 @@ import { UpdateResult } from 'mongodb';
 
 import { Feeds } from '../../../shared/domain/news';
 import { newsModel } from '../../../shared/infrastructure/schemas/feeds.schema';
-import { FeedRepository } from '../../domain/feed.repository';
+import { FeedInterface } from '../../domain/feed.interface';
 
-export class Feed implements FeedRepository {
+export class FeedRepository implements FeedInterface {
   async findAllByDate(date: string): Promise<Feeds[]> {
     return newsModel.find({ date });
   }
