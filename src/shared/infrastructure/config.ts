@@ -10,6 +10,6 @@ export const config = {
     DB_PASS: process.env.DB_PASS || 'root',
     DB_HOST: process.env.DB_HOST || 'localhost',
     DB_PORT: parseInt(process.env.DB_PORT || '27017'),
-    DB_NAME: process.env.DB_NAME || 'feed',
+    DB_NAME: process.env.DB_NAME || 'news',
   },
 };
