@@ -4,12 +4,10 @@ import { UpdateResult } from 'mongodb';
 
 import { Feeds } from '../../../shared/domain/news';
 import { GetDailyNews } from '../../../shared/infrastructure/daily-news/get-daily-news';
-import { Logger } from '../../../shared/infrastructure/logger/logger';
 import { FeedInterface } from '../../domain/feed.interface';
 
 export class FeedController {
   constructor(
-    private readonly _logger: Logger,
     private readonly _getDailyNews: GetDailyNews,
     private readonly _feedRepository: FeedInterface,
   ) {}
@@ -37,9 +35,6 @@ export class FeedController {
   async newNews(req: Request, res: Response) {
     const { body } = req;
     const date = moment().format('YYYY-MM-DD');
-
-    this._logger.info(JSON.stringify(body));
-
     let result: Feeds = await this._feedRepository.findOneByAll({
       ...body,
       date,
@@ -57,9 +52,6 @@ export class FeedController {
   async updateNews(req: Request, res: Response) {
     const { body, params } = req;
     const { id } = params;
-
-    this._logger.info(JSON.stringify(body));
-
     const { matchedCount }: UpdateResult = await this._feedRepository.updateOne(
       id,
       body,
@@ -86,7 +78,6 @@ export class FeedController {
       const result: Feeds = await this._feedRepository.findOneByAll(data);
 
       if (result === null) newFeeds.push(data);
-      this._logger.info(JSON.stringify(result));
     }
     if (newFeeds.length) await this._feedRepository.insertMany(newFeeds);
   }

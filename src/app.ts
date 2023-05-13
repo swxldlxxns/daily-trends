@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
-import express, { Express } from 'express';
+import express, { Express, NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
+import moment from 'moment';
 import * as mongoose from 'mongoose';
 
 import { feedRouter } from './feed/infrastructure/rest/feed.router';
@@ -20,6 +21,16 @@ export class App {
   start() {
     this.app.use(helmet());
     this.app.use(bodyParser.json());
+    this.app.use((req: Request, res: Response, next: NextFunction) => {
+      this._logger.log({
+        date: moment().toDate(),
+        method: req.method,
+        url: req.url,
+        query: req.query,
+        body: req.body,
+      });
+      next();
+    });
     this.app.use('/feed', feedRouter);
     this._listen();
   }
