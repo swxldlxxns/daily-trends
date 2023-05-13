@@ -1,7 +1,7 @@
 import { Request as Req, Response as Res } from 'express';
 import moment from 'moment';
 
-import { FeedRepository } from '../../src/feed/infrastructure/repository/feed.repository';
+import { Feed } from '../../src/feed/application/feed';
 import { FeedController } from '../../src/feed/infrastructure/rest/feed.controller';
 import { Feeds } from '../../src/shared/domain/news';
 import { GetDailyNews } from '../../src/shared/infrastructure/daily-news/get-daily-news';
@@ -18,12 +18,12 @@ describe('FeedController', () => {
     link: 'link.test',
   };
   let getDaily: GetDailyNews;
-  let repository: FeedRepository;
+  let repository: Feed;
   let controller: FeedController;
 
   beforeAll(() => {
     getDaily = new GetDailyNews(new Request());
-    repository = new FeedRepository();
+    repository = new Feed();
     controller = new FeedController(getDaily, repository);
   });
 

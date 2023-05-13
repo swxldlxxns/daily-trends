@@ -2,11 +2,11 @@ import moment from 'moment';
 import { UpdateResult } from 'mongodb';
 import { Model } from 'mongoose';
 
-import { FeedRepository } from '../../src/feed/infrastructure/repository/feed.repository';
+import { Feed } from '../../src/feed/application/feed';
 import { Feeds } from '../../src/shared/domain/news';
 import { newsModel } from '../../src/shared/infrastructure/schemas/feeds.schema';
 
-describe('FeedRepository', () => {
+describe('Feed', () => {
   const date = moment().format('YYYY-MM-DD');
   const feed: Feeds = {
     date,
@@ -14,11 +14,11 @@ describe('FeedRepository', () => {
     resume: 'resumeTest',
     link: 'link.test',
   };
-  let repository: FeedRepository;
+  let repository: Feed;
   let model: Model<Feeds>;
 
   beforeAll(() => {
-    repository = new FeedRepository();
+    repository = new Feed();
     model = newsModel;
   });
 
